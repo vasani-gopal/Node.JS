@@ -59,7 +59,7 @@ app.post("/updatedata", (req, res) => {
 
     student = student.map((el) => {
         if (el.id === id) {
-            return { id, name };  
+            return { id, name };
         }
         return el;
     });
@@ -67,17 +67,30 @@ app.post("/updatedata", (req, res) => {
     res.redirect("/");
 });
 
+const middleware = (req, res, next) => {
+    if (req.query.age >= 18) {
+        next()
+    } else {
+        res.send("Access Denied")
+    }
+};
+
+app.get("/contact", middleware, (req, res) => {
+    res.render("contact")
+});
 
 
-// app.use(express.static(__dirname+"/public"))
-// app.get("/",(req,res)=>{
-
-//     // res.send("Home Page")
-
-//     res.render("index")
-// })               
 
 
+app.use(express.static(__dirname + "/public"))
+app.get("/index", (req, res) => {
+
+    // res.send("Home Page")
+
+    res.render("index")
+})
+
+app.use(middleware)
 
 app.listen(7000, () => {
     console.log("server runing")
