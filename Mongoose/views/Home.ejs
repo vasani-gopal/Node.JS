@@ -10,7 +10,7 @@
 <body>
     <h2>Add User</h2>
 
-    <form action="/insert" method="post" enctype="multipart/form-data">
+    <form action="/insertData" method="post" enctype="multipart/form-data">
         <label>
             Username:
             <input type="text" name="username" placeholder="Enter username" required>
@@ -46,8 +46,8 @@
             </tr>
         </thead>
         <tbody>
-            <% if (user1 && user1.length> 0) { %>
-                <% user1.forEach((u, index)=> { %>
+            <% if (data && data.length> 0) { %>
+                <% data.forEach((u, index)=> { %>
                     <tr>
                         <td>
                             <%= index + 1 %>
@@ -56,7 +56,7 @@
                         <!-- Image Show -->
                         <td>
                             <% if (u.image) { %>
-                                <img src="/upload/<%= u.image %>" width="100" height="100" style="object-fit:cover;">
+                                <img src="/upload/<%= u.image %>" width="100" height="100">
                                 <% } else { %>
                                     No Image
                                     <% } %>

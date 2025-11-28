@@ -4,10 +4,8 @@ const multer = require("multer")
 const path = require("path")
 const user = require('./usemodel/usermodel')
 
-// Express App
 const app = express()
 
-// Static Folder (Correct Path)
 app.use("/upload", express.static(path.join(__dirname, "upload")));
 
 // ---------------- Middlewares ------------------
@@ -17,13 +15,12 @@ app.use(express.urlencoded({ extended: true }))
 
 app.set('view engine', 'ejs')
 
-// Multer Storage Config
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, 'upload')
+        cb(null, 'upload/')
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + "-" + file.originalname)
+        cb(null, file.originalname)
     }
 })
 
@@ -31,42 +28,43 @@ const ImageUpload = multer({ storage: storage }).single("image")
 
 // ---------------- INSERT DATA (File + Form) ------------------
 
-app.post("/insert", ImageUpload, async (req, res) => {
-    try {
-        const { username, password } = req.body;
+app.post('/insertData', ImageUpload, async (req, res) => {
+    const { username, password } = req.body
+    let image = ""
 
-        let image = "";
-        if (req.file) {
-            image = req.file.filename;
-        }
-
-        await user.create({
-            username,
-            password,
-            image
-        });
-
-        return res.redirect("/");
-
-    } catch (err) {
-        console.log(err);
-        res.send(err);
+    if (req.file) {
+        image = req.file.filename
     }
+
+    await user.create({
+        username,
+        password,
+        image
+    })
+        .then((data) => {
+            console.log("Inserted:", data)
+            res.redirect("/")           // ✅ ADD redirect
+        })
+        .catch((err) => {
+            console.log(err)
+            res.send(err)
+        })
 })
+
 
 
 // ------------------ HOME PAGE DATA SHOW ---------------------
 
-app.get("/", async (req, res) => {
-    try {
-        const user1 = await user.find({})
-        res.render("Home", { user1 })
-        console.log(user1)
-    } catch (err) {
-        console.log(err)
-        res.send(err)
-    }
+app.get('/', async (req, res) => {
+    await user.find({})
+        .then((data) => {
+            res.render("home", { data })   // ✅ Only render
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 })
+
 
 
 // ------------------ DELETE USER ---------------------

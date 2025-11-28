@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Form & List</title>
+</head>
+
+<body>
+    <h2>Add User</h2>
+
+    <form action="/insertData" method="post" enctype="multipart/form-data">
+        <label>
+            Username:
+            <input type="text" name="username" placeholder="Enter username" required>
+        </label>
+        <br><br>
+
+        <label>
+            Password:
+            <input type="password" name="password" placeholder="Enter password" required>
+        </label>
+        <br><br>
+
+        <label>
+            file:
+            <input type="file" name="image" required>
+        </label>
+        <br><br>
+
+        <input type="submit" value="Add User">
+    </form>
+
+    <hr>
+
+    <h2>User List</h2>
+
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Sr No.</th>
+                <th>Username</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (data && data.length> 0) { %>
+                <% data.forEach((u, index)=> { %>
+                    <tr>
+                        <td>
+                            <%= index + 1 %>
+                        </td>
+                        <td>
+                            <%= u.username %>
+                        </td>
+                        <td>
+                            <%= u.password %>
+                        </td>
+                        <td>
+                            <img src="<%= u.image %>" alt="" height="100px" width="100px">
+                        </td>
+                    </tr>
+                    <% }) %>
+                        <% } else { %>
+                            <tr>
+                                <td colspan="3">No users found</td>
+                            </tr>
+                            <% } %>
+        </tbody>
+    </table>
+
+</body>
+
+</html>
