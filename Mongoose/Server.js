@@ -51,8 +51,6 @@ app.post('/insertData', ImageUpload, async (req, res) => {
         })
 })
 
-
-
 // ------------------ HOME PAGE DATA SHOW ---------------------
 
 app.get('/', async (req, res) => {
