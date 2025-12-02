@@ -5,7 +5,7 @@ const user = require("./Model/BookModel")
 const B_router = require("./Routes/BookRoutes")
 
 const app = express()
-app.use (express0json())
+app.use (expressjson())
 app.use(('/user', R_router))
 
 app.listen(4000, ()=>{
