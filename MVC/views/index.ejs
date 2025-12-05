@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -67,6 +67,58 @@
             <% }) %>
 
     </table>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <h1>Welcome TO Node</h1>
+
+    <form action="/insertdata" method="post">
+
+        id
+        <input type="text" name="id" placeholder="id">
+
+        name
+        <input type="text" name="name" placeholder="name">
+
+        <input type="Submit">
+    </form>
+
+    <br><br>
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+
+        <% student.map((el, i)=> { %>
+            <tr>
+                <td>
+                    <%= el.id %>
+                </td>
+                <td>
+                    <%= el.name %>
+                </td>
+
+                <td><a href="/delete?id=<%= el.id %>">Delete</a></td>
+                <td><a href="/edit?id=<%= el.id %>">Edit</a></td>
+            </tr>
+            <% }) %>
+    </table>
+
 </body>
 
 </html>

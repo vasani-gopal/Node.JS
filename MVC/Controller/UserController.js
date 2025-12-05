@@ -1,5 +1,26 @@
 const usermodel = require("../model/usermodel")
 
+// LOGIN
+const Login = async (req, res) => {
+    const { email, password } = req.body;
+
+    const user = await usermodel.findOne({ email });
+
+    if (!user) {
+        return res.send({ message: "User Not Found" });
+    }
+
+    if (user.password !== password) {
+        return res.send({ message: "Invalid Password" });
+    }
+
+    res.send({
+        message: "Login Successful",
+        user: user
+    });
+};
+
+
 //CREATE
 const Register = async (req, res) => {
     const data = await usermodel.create(req.body)
@@ -25,4 +46,4 @@ const EditUser = async (req, res) => {
     res.send(data);
 };
 
-module.exports = { Register, GetUser, DeleteUser, EditUser };
+module.exports = { Register, GetUser, DeleteUser, EditUser, Login };
