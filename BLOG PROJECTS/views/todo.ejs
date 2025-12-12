@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1>Welcome <%= username %>
+    </h1>
+
+    <form action="/todo/add" method="POST">
+        <input name="text" placeholder="New Todo" required>
+        <button>Add</button>
+    </form>
+
+    <ul>
+        <% list.forEach((item, i)=> { %>
+            <li>
+                <%= item %>
+                    <form action="/todo/delete" method="POST" style="display:inline">
+                        <input type="hidden" name="index" value="<%= i %>">
+                        <button>Delete</button>
+                    </form>
+            </li>
+            <% }) %>
+    </ul>
+
+    <form action="/logout" method="POST">
+        <button>Logout</button>
+    </form>
+
+</body>
+
+</html>

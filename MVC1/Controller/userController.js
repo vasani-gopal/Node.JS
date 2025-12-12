@@ -5,6 +5,10 @@ const Register = async (req, res) => {
     res.send(data)
 }
 
+const local = (req, res) => {
+    return res.send("logged Successful")
+}
+
 const GetUser = async (req, res) => {
     const data = await usermodal.find()
     res.send(data)
