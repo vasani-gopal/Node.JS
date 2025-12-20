@@ -45,6 +45,8 @@ exports.loginUser = (req, res) => {
     res.redirect("/todo");
 };
 
+
+
 exports.logoutUser = (req, res) => {
     const sid = req.cookies.session;
     if (sid) delete sessions[sid];

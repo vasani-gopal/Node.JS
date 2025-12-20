@@ -3,7 +3,7 @@ const Usermodel = require('../model/usermodal');
 
 const LocalStrategy = require('passport-local').Strategy;
 const localAuth = (passport) => {
-    passport.user(new LocalStrategy(async (username, password, done) => {
+    passport.Usermodel(new LocalStrategy(async (username, password, done) => {
         if (!user) {
             return done(null, false, { message: 'User Not Found' });
         }
@@ -18,7 +18,7 @@ const localAuth = (passport) => {
     });
 
     passport.deserializeUser(async (id, done) => {
-        const user = await User.findById(id);
+        const user = await Usermodel.findById(id);
         done(null, user);
     });
 }

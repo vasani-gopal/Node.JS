@@ -10,7 +10,6 @@ const userSchema = mongoose.Schema({
     password: {
         type: String
     }
-
 })
 
 const usermodel = mongoose.model("user", userSchema)

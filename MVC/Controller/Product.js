@@ -1,22 +1,26 @@
 const productModel = require("../model/ProductModel")
+const Productmodal = require("../model/productmodal")
 
-const createProduct = async(req,res)=>{
-    const data = await productModel.create(req.body)
+const addProduct = async (req, res) => {
+    const data = await Productmodal.create(req.body)
     res.send(data)
 }
 
-const getAllproduct = async(req,res)=>{
-    const data = await productModel.find()(("categoryId"))
+const getProduct = async (req, res) => {
+    const data = await Productmodal.find().populate("categoryId")
     res.send(data)
 }
 
-const updateProduct = async(req,res)=>{
-   const id = req.params.id
-   const data = await productModel.findByIdAndUpdate(id,(req.body))
-   res.send(data)
+const deleteProduct = async (req, res) => {
+    const data = await productModel.findByIdAndDelete(req.params.id);
+    res.send("Product Deleted");
+};
+
+const Editproduct = async (req, res) => {
+    const id = req.params.id
+    const data = await Productmodal.findByIdAndUpdate(id, req.body)
+    res.send("success", data)
 }
 
-const deleteproduct = async(req,res)=>{
-    const data = await productModel.create(req.body)
-    res.send(data)
-}
+
+module.exports = { addProduct, getProduct, deleteProduct, Editproductw }

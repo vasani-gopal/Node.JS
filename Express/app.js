@@ -2,7 +2,6 @@ const express = require("express")
 
 const app = express()
 
-
 app.set("view engine", "ejs")
 
 app.use(express.urlencoded());
@@ -21,10 +20,14 @@ var student = [
     }
 ];
 
+// ////////////////////////////////////////////////////////////////
+
 app.get("/", (req, res) => {
     res.render("Home", { student })
 
 })
+
+////////////////////////////////////////////////////////////////
 
 app.post("/insertdata", (req, res) => {
     const { id, name } = req.body
@@ -34,7 +37,9 @@ app.post("/insertdata", (req, res) => {
     student.push(obj)
 
     res.redirect("/")
-})
+})  
+
+// ////////////////////////////////////////////////////////////////
 
 app.get("/delete", (req, res) => {
     const id = req.query.id
@@ -45,14 +50,17 @@ app.get("/delete", (req, res) => {
     res.redirect("/")
 })
 
+////////////////////////////////////////////////////////////////
 
 app.get("/edit", (req, res) => {
     const id = req.query.id
     const ans = student.filter((el, i) => {
         return el.id == id
     })
-    res.render("edit", { editData: ans[0] })
+    res.render("edit", { editData: ans[0] })r
 })
+
+////////////////////////////////////////////////////////////////
 
 app.post("/updatedata", (req, res) => {
     const { id, name } = req.body;
@@ -67,30 +75,29 @@ app.post("/updatedata", (req, res) => {
     res.redirect("/");
 });
 
-const middleware = (req, res, next) => {
-    if (req.query.age >= 18) {
-        next()
-    } else {
-        res.send("Access Denied")
-    }
-};
+// ////////////////////////////////////////////////////////////////
 
-app.get("/contact", middleware, (req, res) => {
-    res.render("contact")
-});
+// const middleware = (req, res, next) => {
+//     if (req.query.age >= 18) {
+//         next()
+//     } else {
+//         res.send("Access Denied")
+//     }
+// };
 
+// app.get("/contact", middleware, (req, res) => {
+//     res.render("contact")
+// });
 
+// app.use(express.static(__dirname + "/public"))
+// app.get("/index", (req, res) => {
 
+//     // res.send("Home Page")
 
-app.use(express.static(__dirname + "/public"))
-app.get("/index", (req, res) => {
+//     res.render("index")
+// })
 
-    // res.send("Home Page")
-
-    res.render("index")
-})
-
-app.use(middleware)
+// app.use(middleware)
 
 app.listen(7000, () => {
     console.log("server runing")
