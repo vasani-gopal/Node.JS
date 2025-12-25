@@ -25,6 +25,8 @@ U_router.post("/update/:id",update);
 
 U_router.post("/mail",mail)
 
+U_router.post("/verify", verifyToken)
+
 U_RouterRouter.post('/login',passport.authenticate('local'),localAuth)
 
 module.exports = U_router;
