@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Product</h1>
+
+    <form action="/product/insertProduct" method="post" enctype="multipart/form-data">
+        <input type="text" name="title" placeholder="Enter Title">
+        <input type="text" name="price" placeholder="Enter Price">
+        <!-- <input type="text" name="category" placeholder="Enter category"> -->
+        <select name="categoryId" required>
+            <option value="">Select Category</option>
+            <% category.forEach(cat=> { %>
+                <option value="<%= cat._id %>">
+                    <%= cat.title %>
+                </option>
+                <% }) %>
+        </select>
+        <input type="file" name="image" placeholder="Enter Image Url">
+        <input type="submit">
+
+
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>category</th>
+            <th>Image</th>
+        </tr>
+
+        <% user.map((el,i)=>{ %>
+            <tr>
+                <td>
+                    <a href="/product/category/<%= el.categoryId._id %>">
+                        <%= el.title %>
+                    </a>
+                </td>
+                <td>
+                    <%= el.price%>
+                </td>
+                <td>
+                    <%= el.categoryId?.title %>
+
+                </td>
+                <td>
+                    <img src="<%= el.image %>" height="100px" width="100px" alt="">
+                </td>
+            </tr>
+            <% }) %>
+
+    </table>
+</body>
+
+</html>
