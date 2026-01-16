@@ -66,7 +66,7 @@ app.get("/insertdata", (req,res)=>{
 //     const id = req.query.id
 //     const ans = student.filter((el, i) => {
 //         return el.id !== id
-//     })
+//     })   
 //     student = ans
 //     res.redirect("/")
 // })
@@ -94,7 +94,7 @@ app.get("/delete", (req,res)=>{
 
 app.get("/edit", (req, res) => {
     const id = req.query.id
-    const ans = student.filter((el, i) => {
+    const ans = student.filter((el, i) => {     
         return el.id == id
     })
     res.render("edit", { editData: ans[0] })
@@ -102,7 +102,7 @@ app.get("/edit", (req, res) => {
 
 ////////////////////////////////////////////////////////////////
 
-app.post("/updatedata", (req, res) => {
+app.post("/updatedata", (req, res) => {             
     const { id, name } = req.body;
 
     student = student.map((el) => {

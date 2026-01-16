@@ -2,11 +2,6 @@ const usermodel = require("../model/usermodel")
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken")
 
-//CREATE
-const Register = async (req, res) => {
-    const data = await usermodel.create(req.body)
-    res.send(data)
-}
 
 // LOGIN
 const Login = async (req, res) => {
@@ -41,6 +36,13 @@ const Login = async (req, res) => {
     });
 };
 
+
+//CREATE
+const Register = async (req, res) => {
+    const data = await usermodel.create(req.body)
+    res.send(data)
+}
+
 // READ (GET all)
 const GetUser = async (req, res) => {
     const data = await usermodel.find();
@@ -74,7 +76,7 @@ const transporter = nodemail.createTransport({
     auth: {
         user: "vasanigopal2002@gmail.com",
         pass: "gopalvasanni@181002",
-    }, rs
+    },
 
 });
 
@@ -99,7 +101,7 @@ const verifyToken = (req, res) => {
     // console.log(req.headers.authorization)
     let token = req.headers.authorization.split(" ")[1];
     let decoded = jwt.verify(token, "private-key")
-    return res.send(decoded)
+    return res.send(decoded)    ``
 }
 
-module.exports = { Register, GetUser, DeleteUser, EditUser, Login, update };
+module.exports = { Register, GetUser, DeleteUser, EditUser, Login, update };o

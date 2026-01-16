@@ -16,8 +16,8 @@ U_router.get("/login", (req, res) => {
 
 
 U_router.post("/login", Login);
-U_router.post("/register", Register);
 
+U_router.post("/register", Register);
 U_router.get("/all", GetUser);
 U_router.patch("/:id", EditUser);
 U_router.delete("/:id", DeleteUser);
