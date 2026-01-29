@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>New Article</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('navbar') %>
+    
+    <h1>New Article</h1>
+    <form action="/api/articles" method="POST">
+        <div>
+            <label>Title:</label>
+            <input type="text" name="title" required>
+        </div>
+        <div>
+            <label>Image URL:</label>
+            <input type="text" name="image" placeholder="https://example.com/image.jpg">
+        </div>
+        <div>
+            <label>Content:</label>
+            <textarea name="content" required></textarea>
+        </div>
+        <button type="submit">Create Article</button>
+    </form>
+</body>
+</html>

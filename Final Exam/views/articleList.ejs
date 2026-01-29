@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Articles</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('navbar') %>
+    
+    <h1>All Articles</h1>
+    
+    <% if (typeof articles !== 'undefined' && articles && articles.length > 0) { %>
+        <% articles.forEach(article => { %>
+            <%- include('articleItem', { article: article, user: user }) %>
+        <% }) %>
+    <% } else { %>
+        <p>No articles found.</p>
+    <% } %>
+</body>
+</html>

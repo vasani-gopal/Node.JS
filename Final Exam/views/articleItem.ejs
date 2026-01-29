@@ -1,0 +1,32 @@
+<div class="article">
+    <h2><%= article.title %></h2>
+    <div class="article-meta">
+        By <%= article.author.username %> on <%= article.createdAt.toLocaleDateString() %>
+    </div>
+    
+    <% if (article.image && article.image !== '') { %>
+        <div class="article-image">
+            <div class="article-image-container">
+                <img src="<%= article.image %>" alt="<%= article.title %>" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\\'padding: 40px; text-align: center; color: #6c757d;\\'>Image not available</div>'">
+            </div>
+        </div>
+    <% } %>
+    
+    <div class="article-content">
+        <%= article.content %>
+    </div>
+    
+    <% if (typeof user !== 'undefined' && user) { %>
+        <div class="actions">
+            <% if (user.id === article.author._id.toString() || user.role === 'admin') { %>
+                <a href="/articles/edit/<%= article._id %>" class="edit-btn">Edit</a>
+            <% } %>
+            <% if (user.id === article.author._id.toString() || user.role === 'admin') { %>
+                <form action="/api/articles/<%= article._id %>" method="POST" style="display:inline;">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            <% } %>
+        </div>
+    <% } %>
+</div>

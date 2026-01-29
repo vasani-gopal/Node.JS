@@ -1,0 +1,385 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #555;
+}
+
+.nav-left a, .nav-right a {
+    color: white;
+    text-decoration: none;
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.nav-left a:hover, .nav-right a:hover {
+    background-color: #555;
+}
+
+.user-name {
+    color: #4CAF50;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.logout-btn {
+    background-color: #f44336 !important;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+p {
+    line-height: 1.6;
+    color: #666;
+}
+
+.articles-grid {
+    margin: 20px -15px; /* Negative margin to compensate for article margins */
+    text-align: left;
+    font-size: 0; /* Remove whitespace between inline-block elements */
+    overflow: hidden;
+}
+
+.article {
+    background-color: white;
+    margin: 0 15px 20px 15px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+    border-left: 4px solid #007bff;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    height: auto;
+    min-height: 300px;
+    display: inline-block;
+    vertical-align: top;
+    width: calc(33.333% - 30px);
+    box-sizing: border-box;
+    font-size: 14px; /* Reset font size */
+    white-space: normal;
+}
+
+.article:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.article h2 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.article-meta {
+    color: #6c757d;
+    font-size: 12px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    font-style: italic;
+}
+
+.article-content {
+    color: #495057;
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    word-wrap: break-word;
+    flex-grow: 1;
+}
+
+.article-image {
+    margin: 12px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.article-image-container {
+    position: relative;
+    width: 100%;
+    overflow: visible;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.article-image img {
+    max-width: 100%;
+    height: auto;
+    max-height: 150px;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    border: 1px solid #e9ecef;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.article-image img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+}
+
+@media (max-width: 1024px) {
+    .articles-grid {
+        margin: 20px -15px;
+    }
+    .article {
+        width: calc(50% - 30px);
+        margin: 0 15px 20px 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .articles-grid {
+        margin: 20px 0;
+    }
+    .article {
+        width: 100%;
+        margin: 0 0 20px 0;
+    }
+    
+    .article h2 {
+        font-size: 20px;
+    }
+    
+    .article-content {
+        font-size: 15px;
+    }
+}
+
+.actions {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.actions a, .actions button {
+    background-color: #007bff;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border: none;
+    border-radius: 3px;
+    margin-right: 10px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.actions a:hover, .actions button:hover {
+    background-color: #0056b3;
+}
+
+.edit-btn {
+    background-color: #28a745 !important;
+}
+
+.edit-btn:hover {
+    background-color: #218838 !important;
+}
+
+.delete-btn {
+    background-color: #dc3545 !important;
+}
+
+.delete-btn:hover {
+    background-color: #c82333 !important;
+}
+
+form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+form div {
+    margin-bottom: 15px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+form input, form textarea, form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+form textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+form button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+form button:hover {
+    background-color: #218838;
+}
+
+form .form-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form-actions button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form-actions button:hover {
+    background-color: #0056b3;
+}
+
+.form-actions .delete-btn {
+    background-color: #dc3545 !important;
+}
+
+.form-actions .delete-btn:hover {
+    background-color: #c82333 !important;
+}
+
+.form-actions form {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    background: none;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin: 30px 0;
+}
+
+h2 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+.no-articles {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.no-articles p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    nav a, nav span {
+        margin: 5px;
+        display: block;
+    }
+    
+    .container {
+        padding: 10px;
+    }
+    
+    .article {
+        margin: 10px 0;
+        padding: 15px;
+    }
+}

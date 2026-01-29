@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Articles</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('navbar') %>
+    
+    <h1>My Articles</h1>
+    
+    <% if (typeof articles !== 'undefined' && articles && articles.length > 0) { %>
+        <div class="articles-grid">
+            <% articles.forEach(article => { %>
+                <%- include('articleItem', { article: article, user: user }) %>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <div class="no-articles">
+            <p>You haven't written any articles yet.</p>
+            <a href="/articles/new" class="btn btn-primary">Write your first article</a>
+        </div>
+    <% } %>
+</body>
+</html>

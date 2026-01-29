@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Article</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('navbar') %>
+    
+    <h1>Edit Article</h1>
+    <form action="/api/articles/<%= article._id %>" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <div>
+            <label>Title:</label>
+            <input type="text" name="title" value="<%= article.title %>" required>
+        </div>
+        <div>
+            <label>Image URL:</label>
+            <input type="text" name="image" value="<%= article.image %>" placeholder="https://example.com/image.jpg">
+        </div>
+        <div>
+            <label>Content:</label>
+            <textarea name="content" required><%= article.content %></textarea>
+        </div>
+        <div class="form-actions">
+            <button type="submit">Update Article</button>
+        </div>
+    </form>
+    
+    <% if (user.role === 'admin' || (user.id === article.author._id.toString())) { %>
+        <div class="delete-section">
+            <form action="/api/articles/<%= article._id %>" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit" class="delete-btn">Delete Article</button>
+            </form>
+        </div>
+    <% } %>
+</body>
+</html>

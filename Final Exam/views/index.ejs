@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home - Blog</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <%- include('navbar') %>
+    
+    <div class="container">
+        <h1>Welcome to Blog Application</h1>
+        <p>A simple blog platform where you can create, read, and manage articles.</p>
+        
+        <div class="features">
+            <h2>Features:</h2>
+            <ul>
+                <li>User authentication with roles</li>
+                <li>Create and manage articles</li>
+                <li>Role-based access control</li>
+                <li>Responsive design</li>
+            </ul>
+        </div>
+        
+        <div class="actions">
+            <% if (typeof user !== 'undefined' && user) { %>
+                <a href="/articles">View All Articles</a>
+                <a href="/my-articles">My Articles</a>
+                <a href="/articles/new">Write New Article</a>
+            <% } else { %>
+                <a href="/register">Get Started - Register</a>
+                <a href="/login">Login</a>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

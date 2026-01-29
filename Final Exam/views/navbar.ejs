@@ -1,0 +1,18 @@
+<nav>
+    <div class="nav-left">
+        <a href="/">Home</a>
+        <a href="/articles">Articles</a>
+    </div>
+    
+    <div class="nav-right">
+        <% if (typeof user !== 'undefined' && user) { %>
+            <a href="/my-articles">My Articles</a>
+            <a href="/articles/new">Write Article</a>
+            <span class="user-name">Welcome, <%= user.username %></span>
+            <a href="/api/auth/logout" class="logout-btn">Logout</a>
+        <% } else { %>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        <% } %>
+    </div>
+</nav>
